@@ -13,4 +13,4 @@ SynthDef.new(\multi, {
 }).add;
 )
 
-x = Synth.new(\multi);
+Synth.new(\multi);

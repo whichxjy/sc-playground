@@ -1,13 +1,13 @@
 (
-SynthDef.new(\lf_pulse, {
+SynthDef.new(\lr_pulse, {
     arg ampHz = 4, fund = 40, max_partial = 4, width = 0.5;
     var amp1, amp2, freq1, freq2, sig1, sig2;
     amp1 = LFPulse.kr(ampHz, 0, 0.12) * 0.75;
     amp2 = LFPulse.kr(ampHz, 0.5, 0.12) * 0.75;
     freq1 = LFNoise0.kr(4).exprange(fund, fund * max_partial).round(fund);
     freq2 = LFNoise0.kr(4).exprange(fund, fund * max_partial).round(fund);
-    freq1 = freq1 * LFPulse.kr(8, add:1);
-    freq2 = freq2 * LFPulse.kr(6, add:1);
+    freq1 = freq1 * LFPulse.kr(8, add: 1);
+    freq2 = freq2 * LFPulse.kr(6, add: 1);
     sig1 = Pulse.ar(freq1, width, amp1);
     sig2 = Pulse.ar(freq2, width, amp2);
     sig1 = FreeVerb.ar(sig1, 0.7, 0.8, 0.25);
@@ -17,4 +17,4 @@ SynthDef.new(\lf_pulse, {
 }).add;
 )
 
-x = Synth.new(\lf_pulse);
+Synth.new(\lr_pulse);
